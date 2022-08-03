@@ -24,6 +24,7 @@ query ExampleQuery {
 ```
 >
 >Response :
+>
 >{
   "data": {
     "beastList": [
@@ -85,6 +86,7 @@ mutation RootMutation {
 }
 ````
 >Response :
+>
 >{
   "data": {
     "addBeast": {
