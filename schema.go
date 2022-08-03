@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/graphql-go/graphql"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+
+	"github.com/graphql-go/graphql"
 )
 
 //Helper function to import json from file to map
@@ -27,11 +28,11 @@ var BeastList []Beast
 var _ = importJSONDataFromFile("./beastData.json", &BeastList)
 
 type Beast struct {
-    ID int `json:"id"`
-	Name   string `json:"name"`
-	Description string `json:"description"`
-	OtherNames []string `json:"otherNames"`
-	ImageURL string `json:"imageUrl"`
+	ID          int      `json:"id"`
+	Name        string   `json:"name"`
+	Description string   `json:"description"`
+	OtherNames  []string `json:"otherNames"`
+	ImageURL    string   `json:"imageUrl"`
 }
 
 // define custom GraphQL ObjectType `beastType` for our Golang struct `Beast`
@@ -97,11 +98,11 @@ var rootMutation = graphql.NewObject(graphql.ObjectConfig{
 				// perform mutation operation here
 				// for e.g. create a Beast and save to DB.
 				newBeast := Beast{
-					ID:   newID,
-					Name: name,
+					ID:          newID,
+					Name:        name,
 					Description: description,
-					OtherNames: otherNames,
-					ImageURL: imageUrl,
+					OtherNames:  otherNames,
+					ImageURL:    imageUrl,
 				}
 
 				BeastList = append(BeastList, newBeast)
@@ -164,7 +165,6 @@ var rootMutation = graphql.NewObject(graphql.ObjectConfig{
 })
 
 // root query
-// test with Sandbox at localhost:8080/sandbox
 var rootQuery = graphql.NewObject(graphql.ObjectConfig{
 	Name: "RootQuery",
 	Fields: graphql.Fields{
